@@ -1,4 +1,4 @@
-**dev notes**
+**Notes**
 
 When served locally, a 403 error on video files emanating from the following JWPLayer URL occurs periodically:
 
