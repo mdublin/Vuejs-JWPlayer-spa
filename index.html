@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/vueModal.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/jwplayerBackgroundStyle.css" rel="stylesheet" type="text/css" />
+
+    <!-- data-main indicates to require.js that the very next script to be run is config.js -->
+    <script data-main="assets/js/config.js" src="assets/js/vendors/require.js"></script>
+
+    <body>
+
+        <script type="text/x-template" id="videobackground-template">
+            <!-- jwplayer -->
+            <div class="container-responsive">
+                <div class="video-background-demo">
+                    <div id="js-background-video-container" class="background-video-container">
+                        <div id="js-background-video"></div>
+                    </div>
+                </div>
+            </div>
+
+        </script>
+
+        <!-- template for the modal component -->
+        <script type="text/x-template" id="modal-template">
+            <transition name="modal">
+                <div class="modal-mask">
+                    <div class="modal-wrapper">
+                        <div class="modal-container">
+                            <!-- <form id="form" v-on:submit.prevent="addUser"> -->
+                            <form id="form" v-on:submit.prevent="login">
+                                <h3 slot="header">Login</h3>
+                                <input type="email" v-model="newUser.email" placeholder="email@email.com">
+                                <input type="password" v-model="newUser.name" placeholder="password">
+                                <div class="button">
+                                    <input type="submit" value="login">
+                                </div>
+                            </form>
+                            <ul class="errors">
+                                <li v-show="!validation.name">Name cannot be empty.</li>
+                                <li v-show="!validation.email">Please provide a valid email address.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </transition>
+        </script>
+
+        <style>
+            .top-buffer {
+                margin-top: 20px;
+            }
+        </style>
+
+
+        <script type="text/x-template" id="videowall-template">
+
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="col-xs-6 col-md-4">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" id="wall-player-0"></iframe>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6 col-md-4">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" id="wall-player-1"></iframe>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6 col-md-4">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" id="wall-player-2"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="col-xs-6 col-md-4">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" id="wall-player-3"></iframe>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-4">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" id="wall-player-4"></iframe>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-4">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" id="wall-player-5"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="col-xs-6 col-md-4">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <wall-player-6 class="embed-responsive-item" id="wall-player-6"></wall-player-6>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-4">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <wall-player-7 class="embed-responsive-item" id="wall-player-7"></wall-player-7>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-4">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <wall-player-8 class="embed-responsive-item" id="wall-player-8"></wall-player-8>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </script>
+
+
+
+
+        <!-- app -->
+        <div id="app">
+
+            <!-- background video template -->
+            <videobackground-div v-if="showVideoBackground"></videobackground-div>
+
+            <!-- <button id="show-modal" @click="showModal = true">Show Modal</button> -->
+            <!-- use the modal component, pass in the prop -->
+            <!-- Conditionally render the element based on the truthy-ness of the expression value.  -->
+
+            <!-- modal with login template -->
+            <modal v-if="showModal" @close="showModal = false"></modal>
+
+            <!-- video wall template -->
+            <videowall-div v-if="showVideoWall" @close="showVideoWall = false"></videowall-div>
+
+
+        </div>
+
+    </body>
