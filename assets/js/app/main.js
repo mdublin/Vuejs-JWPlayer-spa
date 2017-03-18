@@ -9,6 +9,21 @@ define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer
     });
 
 
+
+    // get playlist callback, this fires first then calls the player instance factory
+    function loadFeed(){
+      $.ajax({
+        url: '//content.jwplatform.com/feeds/EU8xl6Xv.json',
+        dataType: 'JSON'
+      }).done(function(data) {
+        fullPlaylist = data.playlist;
+        //setupPlayer();
+        //JWInstanceFactory();
+      });
+    }
+
+
+
     // jwplayer instance factory function
     var jwplayers = [];
 
@@ -39,6 +54,7 @@ define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer
               height: '100%',
               width: '100%',
               file: '/230891258.mp4'
+              //playlist: playlist,
               //image: 'http://11986-presscdn-0-77.pagely.netdna-cdn.com/wp-content/uploads/2016/03/widescreen-iphone-photo.jpg'
             });
             jwplayers.push(jwplayerInstanceNames[k]);
