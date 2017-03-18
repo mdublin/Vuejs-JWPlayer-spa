@@ -16,7 +16,7 @@ define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer
 
         var customElements2 = [];
 
-        for (var i = 0; i < 9; i++) {
+        for (var i = 0; i < 12; i++) {
             customElements2.push("wall-player-" + i);
         }
 
@@ -24,7 +24,7 @@ define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer
 
         var jwplayerInstanceNames = [];
 
-        for (var j = 0; j < 9; j++) {
+        for (var j = 0; j < 12; j++) {
             jwplayerInstanceNames.push("videowallplayer" + j);
         }
 
@@ -35,9 +35,11 @@ define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer
               autostart: false,
               controls: true,
               aspectratio: '16:9',
-              //stretching: 'fill',
-              file: 'https://www.youtube.com/watch?v=obAtn6I5rbY',
-              image: 'http://11986-presscdn-0-77.pagely.netdna-cdn.com/wp-content/uploads/2016/03/widescreen-iphone-photo.jpg'
+              stretching: 'fill',
+              height: '100%',
+              width: '100%',
+              file: '/230891258.mp4'
+              //image: 'http://11986-presscdn-0-77.pagely.netdna-cdn.com/wp-content/uploads/2016/03/widescreen-iphone-photo.jpg'
             });
             jwplayers.push(jwplayerInstanceNames[k]);
         }
@@ -50,51 +52,15 @@ define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer
 
     Vue.component('videowall-div', {
         template: '#videowall-template',
-        /*
-        data: function() {
-          return {
-            players: (function() {
-              players = [];
-              for (var i = 0; i < globalVideoArray.length; i++){
-                (function() {
-                  var player = `<div class="col-xs-6 col-md-4"><div class="embed-responsive embed-responsive-16by9"><playerembed${i}>${globalVideoArray[i]}</playerembed${i}></div>`;
-                  players.push(player);
-                })();
-              }
-              return players;
-            })()
-          }
-        },
-        */
         mounted: function() {
             return JWInstanceFactory();
         }
-
-
-        // https://vuejs.org/v2/api/#mounted
-        /*
-        mounted: function() {
-          var videowallplayer = jwplayer('wall-player').setup({
-              file: 'http://content.jwplatform.com/videos/9EkN93ib-cYifo9hM.mp4',
-              autostart: true,
-              //controls: true,
-              //playlist: fullPlaylist,
-              //mute: true,
-              //repeat: true,
-              //stretching: 'fill',
-              //height: '100%',
-              //width: '100%'
-              height: '315',
-              width: '560'
-
-          });
-          return videowallplayer;
-        }
-        */
-
     });
 
 
+    Vue.component('navbar-div', {
+      template: '#navbar-template'
+    });
 
 
     Vue.component('modal', {
@@ -168,6 +134,7 @@ define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer
                     console.log("logged in!");
                     Vueapp.showModal = false;
                     Vueapp.showVideoBackground = false;
+                    Vueapp.showNavBar = true;
                     Vueapp.showVideoWall = true;
                 } else {
                     console.log("invalid login info");
@@ -185,7 +152,8 @@ define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer
         data: {
             showVideoBackground: true,
             showModal: false,
-            showVideoWall: false
+            showVideoWall: false,
+            showNavBar: false
             //newUser: {
             //     name: '',
             //     email: ''
