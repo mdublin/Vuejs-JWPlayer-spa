@@ -9,7 +9,6 @@ define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer
     });
 
 
-
     // get playlist callback, this fires first then calls the player instance factory
     function loadFeed(){
       $.ajax({
@@ -35,15 +34,11 @@ define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer
             customElements2.push("wall-player-" + i);
         }
 
-        console.log(customElements2);
-
         var jwplayerInstanceNames = [];
 
         for (var j = 0; j < 12; j++) {
             jwplayerInstanceNames.push("videowallplayer" + j);
         }
-
-        console.log(jwplayerInstanceNames);
 
         for (var k = 0; k < jwplayerInstanceNames.length; k++) {
             jwplayerInstanceNames[k] = jwplayer(customElements2[k]).setup({
@@ -59,8 +54,6 @@ define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer
             });
             jwplayers.push(jwplayerInstanceNames[k]);
         }
-
-        console.log(jwplayers);
 
         return jwplayers;
     }
@@ -90,11 +83,6 @@ define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer
                 }
             }
         },
-        // firebase binding
-        // https://github.com/vuejs/vuefire
-        //firebase: {
-        //    users: usersRef
-        //},
         // computed property for form validation state
         computed: {
             // paraphrased from docs on computeds:
@@ -128,18 +116,6 @@ define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer
         },
         // methods
         methods: {
-            /*
-            addUser: function () {
-                if (this.isValid) {
-                    usersRef.push(this.newUser)
-                    this.newUser.name = ''
-                    this.newUser.email = ''
-                }
-            },
-            removeUser: function (user) {
-                usersRef.child(user['.key']).remove()
-            },
-            */
             //just for demo
             login: function() {
                 var demoCreds = {
