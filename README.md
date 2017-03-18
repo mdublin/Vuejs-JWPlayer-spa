@@ -11,11 +11,12 @@ This project is using AMD but we have yet to implement a minifier/concatenator/c
 
 
 
-Screen shot (desktop):
+Screen shot:
 
 ![](https://raw.githubusercontent.com/mdublin/Vuejs-JWPlayer-spa/master/screenshot1.png)
 
-Screen shot (mobile):
+Screen shot (responsive):
+
 ![](https://raw.githubusercontent.com/mdublin/Vuejs-JWPlayer-spa/master/screenshot2.png)
 
 
