@@ -11,4 +11,11 @@ This project is using AMD but we have yet to implement a minifier/concatenator/c
 
 
 
+Screen shot (desktop):
+
+![](https://raw.githubusercontent.com/mdublin/Vuejs-JWPlayer-spa/master/screenshot1.png)
+
+Screen shot (mobile):
+![](https://raw.githubusercontent.com/mdublin/Vuejs-JWPlayer-spa/master/screenshot2.png)
+
 
