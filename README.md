@@ -23,9 +23,11 @@ However, when deployed to an S3 bucket to be served statically, this error no lo
 
 
 
-This project uses the AMD pattern via requirejs for some basic module definition and the r.js optimizer. There is an r.js build file already configured in assets/js/build.js. To use r.js with the provided build.js file, run this command from within the directory containing the repo wherein r.js is at the same level (a sibliing) of the JWPlayer+Vue repo directory and run: 
+This project uses the AMD pattern via requirejs for some basic module definition and the r.js optimizer. There is an r.js build file already configured in assets/js/build.js. To use r.js with the provided build.js file, makes sure your downloaded r.js file is located at the same level as the JWPlayer+Vue repo directory and run the following command: 
 
 ```$ r.js -o JWPlayer+Vue/assets/js/build.js```
+
+
 
 In the same directory, this will create main-build.js, which you can then configure for use in the index.html (it is currently commented out)
 
