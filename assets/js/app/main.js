@@ -12,57 +12,52 @@ define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer
     // get playlist callback, this fires first then calls the player instance factory
     function loadFeed(){
       $.ajax({
-        url: '//content.jwplatform.com/feeds/EU8xl6Xv.json',
+        url: 'https://content.jwplatform.com/feeds/EU8xl6Xv.json',
         dataType: 'JSON'
       }).done(function(data) {
         fullPlaylist = data.playlist;
-        //setupPlayer();
-        //JWInstanceFactory();
+        JWInstanceFactory(fullPlaylist);
       });
     }
 
-
-
-    // jwplayer instance factory function
+    // jwplayer instance factory callback
     var jwplayers = [];
 
-    function JWInstanceFactory() {
+    function JWInstanceFactory(fullPlaylist) {
+      console.log(fullPlaylist);
 
-        var customElements2 = [];
+      var customElements2 = [];
+      for (var i = 0; i < fullPlaylist.length; i++) {
+        customElements2.push("wall-player-" + i);
+      }
 
-        for (var i = 0; i < 12; i++) {
-            customElements2.push("wall-player-" + i);
-        }
+      var jwplayerInstanceNames = [];
+      for (var j = 0; j < fullPlaylist.length; j++) {
+        jwplayerInstanceNames.push("videowallplayer" + j);
+      }
 
-        var jwplayerInstanceNames = [];
-
-        for (var j = 0; j < 12; j++) {
-            jwplayerInstanceNames.push("videowallplayer" + j);
-        }
-
-        for (var k = 0; k < jwplayerInstanceNames.length; k++) {
-            jwplayerInstanceNames[k] = jwplayer(customElements2[k]).setup({
-              autostart: false,
-              controls: true,
-              aspectratio: '16:9',
-              stretching: 'fill',
-              height: '100%',
-              width: '100%',
-              file: '/230891258.mp4'
-              //playlist: playlist,
-              //image: 'http://11986-presscdn-0-77.pagely.netdna-cdn.com/wp-content/uploads/2016/03/widescreen-iphone-photo.jpg'
-            });
-            jwplayers.push(jwplayerInstanceNames[k]);
-        }
-
-        return jwplayers;
+      for (var k = 0; k < jwplayerInstanceNames.length; k++) {
+        jwplayerInstanceNames[k] = jwplayer(customElements2[k]).setup({
+          autostart: false,
+          controls: true,
+          aspectratio: '16:9',
+          stretching: 'fill',
+          height: '100%',
+          width: '100%',
+          file: fullPlaylist[k].sources[4].file // assuming all assets in playlist are HD, grabbing file at index where 720p rendition is located
+          image: fullPlaylist[k].image // grabbing file url from image property
+        });
+        jwplayers.push(jwplayerInstanceNames[k]);
+      }
+      return jwplayers;
     }
 
-
+    // template is hardcoded for 12 videos, need to do programmatic template iteration
     Vue.component('videowall-div', {
         template: '#videowall-template',
-        mounted: function() {
-            return JWInstanceFactory();
+        mounted: function() { // gets called after component is rendered
+            //return JWInstanceFactory();
+            return loadFeed();
         }
     });
 
