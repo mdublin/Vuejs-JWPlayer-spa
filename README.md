@@ -1,5 +1,5 @@
 
-###Setup:
+### Setup:
 
 
 This project assumes a few things regarding the JWPlayer-side of things:
@@ -10,7 +10,7 @@ This project assumes a few things regarding the JWPlayer-side of things:
 
 
 
-For local dev/user, just point http-server at the repo's parent directory JWplayer+Vue
+For local dev/user, just point http-server at the repo's parent directory JWPlayer+Vue
 
 **Note:**
 
@@ -23,7 +23,7 @@ However, when deployed to an S3 bucket to be served statically, this error no lo
 
 
 
-This project uses the AMD pattern via requirejs for some basic module definition and the r.js optimizer. There is an r.js build file already configured in assets/js/build.js. To use r.js with the provided build.js file, cd into assets/js and run: 
+This project uses the AMD pattern via requirejs for some basic module definition and the r.js optimizer. There is an r.js build file already configured in assets/js/build.js. To use r.js with the provided build.js file, run this command from within the directory containing the repo wherein r.js is at the same level (a sibliing) of the JWPlayer+Vue repo directory and run: 
 
 ```$ r.js -o JWPlayer+Vue/assets/js/build.js```
 
