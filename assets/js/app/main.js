@@ -44,7 +44,7 @@ define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer
           stretching: 'fill',
           height: '100%',
           width: '100%',
-          file: fullPlaylist[k].sources[4].file // assuming all assets in playlist are HD, grabbing file at index where 720p rendition is located
+          file: fullPlaylist[k].sources[4].file, // assuming all assets in playlist are HD, grabbing file at index where 720p rendition is located
           image: fullPlaylist[k].image // grabbing file url from image property
         });
         jwplayers.push(jwplayerInstanceNames[k]);
