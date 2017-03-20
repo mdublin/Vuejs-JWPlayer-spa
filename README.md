@@ -8,7 +8,8 @@ This project assumes a few things regarding the JWPlayer-side of things:
 2. You have created a playlist and know how to grab the JSON feed for that playlist
 3. Know where to grab the JW Player 7 (Self-Hosted) package
 4. I am including my player license key at the very bottom of the jwplayer.js file:
-```jwplayer.key="{your license key here}"
+
+```jwplayer.key="{your license key here}"```
 
 
 
