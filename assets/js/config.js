@@ -4,7 +4,7 @@ requirejs.config({
     baseUrl: './assets/js',
     //deps: ['app/main'], //deps for depends, this file depends on app/mail file being run to kick off app after the other properties here are loaded
     paths: {
-        // 'jquery': 'vendors/jquery-3.1.1.min',
+         //'jquery': 'vendors/jquery-3.1.1.min',
         'jquery': 'vendors/jquery-1.8.0.min',
         'bootstrap': 'vendors/bootstrap',
         'vue': 'vendors/vue.min',
