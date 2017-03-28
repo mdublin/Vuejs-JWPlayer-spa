@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 module.exports = {
     entry: './main.js',
     output: {
@@ -15,8 +17,15 @@ module.exports = {
           loader: 'style-loader!css-loader'
         },
         {
-          test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' //for handling Boostrap fonts 
+          test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' //for handling Boostrap fonts
         }
       ]
-    }
+    },
+    plugins: [
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false
+        }
+      })
+    ]
 }
