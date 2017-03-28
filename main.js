@@ -1,7 +1,12 @@
+require('./assets/css/bootstrap.min.css');
+require('./assets/css/vueModal.css');
+require('./assets/css/jwplayerBackgroundStyle.css');
+
 const $ = require('jquery');
 const jwb = require('./jwplayerBackground.js');
 require('expose-loader?LibraryName!./jwplayer.js');
 const Vue = require('./vue.min.js');
+
 
 var emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
