@@ -1,5 +1,7 @@
-// jwplayer module is the js library code the player in account that is provided
-define(['jquery', 'jwplayer'], function($, jwplayer) {
+//const $ = require('./jquery-3.1.1.min.js');
+const $ = require('jquery');
+require('expose-loader?LibraryName!./jwplayer.js');
+
 
     var videoContainer = $('#js-background-video-container'),
         fullPlaylist;
@@ -97,5 +99,3 @@ define(['jquery', 'jwplayer'], function($, jwplayer) {
         fullPlaylist = data.playlist;
         setupPlayer();
     });
-
-});

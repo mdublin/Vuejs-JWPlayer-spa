@@ -1,5 +1,11 @@
 // main module, including jwpbackground module - we just include this but don't need to do anything with it, it's just loaded when the main module is called at end of the config.js module (which is pointed to for requirejs as the value of the data-main attribute in the script tag in index.html)
-define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer, Vue) {
+//define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer, Vue) {
+
+//const $ = require('./jquery-3.1.1.min.js');
+const $ = require('jquery');
+const jwb = require('./jwplayerBackground.js');
+require('expose-loader?LibraryName!./jwplayer.js');
+const Vue = require('./vue.min.js');
 
     var emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
@@ -7,7 +13,6 @@ define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer
     Vue.component('videobackground-div', {
         template: '#videobackground-template'
     });
-
 
     // get playlist callback, this fires first then calls the player instance factory
     function loadFeed(){
@@ -131,8 +136,6 @@ define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer
         }
     });
 
-
-
     // instantiating root Vue instance
     var Vueapp = new Vue({
         el: '#app',
@@ -141,20 +144,11 @@ define(['jquery', 'jwpbackground', 'jwplayer', 'vue'], function($, jwb, jwplayer
             showModal: false,
             showVideoWall: false,
             showNavBar: false
-            //newUser: {
-            //     name: '',
-            //     email: ''
-            // }
-        }
-    })
-
-
+          }
+        });
 
     var divClick = document.getElementById("js-background-video-container");
     divClick.addEventListener("click", function() {
         console.log("js-background-video clicked!");
         Vueapp.showModal = true;
     });
-
-
-});
